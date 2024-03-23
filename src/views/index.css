@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: left;
+    background-color: #404040;
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #333333 #4c4c4c;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+.table td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #4c4c4c;
+}
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+._wrapper_1cwmz_19 {
+    display: grid;
+    grid-template-columns: 33% 1fr 33%;
+    grid-template-rows: 52px 40vh 1fr;
+    grid-template-areas:
+        "top-bar top-bar top-bar"
+        "game-display bet-controls right-panel"
+        "bottom-panel bottom-panel right-panel";
+    padding: 0 5px;
+  }
+
+  ._gameDisplay_1cwmz_32 {
+    grid-area: game-display;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 20px 1fr 33px;
+    grid-template-areas:
+        "max-profit-box"
+        "graphic-display"
+        "previous-crashes";
+}
+
+._gameDisplay_1cwmz_32 {
+    box-shadow: 0 4px 8px -4px #0000001a;
+    background-color: #4c4c4c;
+    border-radius: .4rem;
+    margin: 5px;
+}
+._betControls_1cwmz_32 {
+    grid-area: bet-controls;
+    overflow-y: auto;
+}
+._betControls_1cwmz_32, ._gameDisplay_1cwmz_32 {
+    box-shadow: 0 4px 8px -4px #0000001a;
+    background-color: #4c4c4c;
+    border-radius: .4rem;
+    margin: 5px;
+}
+._bottomPanel_1cwmz_100 {
+    grid-area: bottom-panel;
+    margin: 5px 5px 10px;
+}
+._rightPanel_1cwmz_32 {
+    grid-area: right-panel;
+    height: 0 auto;
+    margin-bottom: 10px;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 30px;
+    grid-template-areas:
+        "player-list-table"
+        "player-list-stats";
+}
+._component-box_1cwmz_32, ._rightPanel_1cwmz_32, ._betControls_1cwmz_32, ._gameDisplay_1cwmz_32 {
+    box-shadow: 0 4px 8px -4px #0000001a;
+    background-color: #4c4c4c;
+    border-radius: .4rem;
+    margin: 5px;
+}
+
+._playerListStatsTable_93izl_5 {
+    text-align: center;
+    margin-bottom: 0;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #0000000d;
+}
