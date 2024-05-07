@@ -3,184 +3,23 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useQuery } from "@tanstack/react-query";
 
 export function BetHistory() {
-  const invoices = [
-    {
-      invoice: "INV001",
-      paymentStatus: "-",
-      totalAmount: "$250.00",
-      paymentMethod: "200",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "-",
-      totalAmount: "$150.00",
-      paymentMethod: "454",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "-",
-      totalAmount: "$350.00",
-      paymentMethod: "89",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "-",
-      totalAmount: "$450.00",
-      paymentMethod: "897",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "-",
-      totalAmount: "$550.00",
-      paymentMethod: "100",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "-",
-      totalAmount: "$200.00",
-      paymentMethod: "1000",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "-",
-      totalAmount: "$300.00",
-      paymentMethod: "147",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "-",
-      totalAmount: "$250.00",
-      paymentMethod: "329",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "-",
-      totalAmount: "$250.00",
-      paymentMethod: "200",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "-",
-      totalAmount: "$150.00",
-      paymentMethod: "454",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "-",
-      totalAmount: "$350.00",
-      paymentMethod: "89",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "-",
-      totalAmount: "$250.00",
-      paymentMethod: "200",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "-",
-      totalAmount: "$150.00",
-      paymentMethod: "454",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "-",
-      totalAmount: "$350.00",
-      paymentMethod: "89",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "-",
-      totalAmount: "$450.00",
-      paymentMethod: "897",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "-",
-      totalAmount: "$550.00",
-      paymentMethod: "100",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "-",
-      totalAmount: "$200.00",
-      paymentMethod: "1000",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "-",
-      totalAmount: "$350.00",
-      paymentMethod: "89",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "-",
-      totalAmount: "$250.00",
-      paymentMethod: "200",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "-",
-      totalAmount: "$150.00",
-      paymentMethod: "454",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "-",
-      totalAmount: "$350.00",
-      paymentMethod: "89",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "-",
-      totalAmount: "$450.00",
-      paymentMethod: "897",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "-",
-      totalAmount: "$550.00",
-      paymentMethod: "100",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "-",
-      totalAmount: "$200.00",
-      paymentMethod: "1000",
-      hash: "bc7d387dbd484a57284c14c3da0f1",
-    },
-  ];
+  const { data } = useQuery({
+    queryKey: ["IRandomNumberLedger"],
+    refetchInterval: 5000,
+    queryFn: async () =>
+      await fetch(`http://localhost:3001/api/socket`).then((response) =>
+        response.json()
+      ),
+  });
+  console.log({ data });
 
   return (
     <ScrollArea className="h-[545px]">
@@ -206,25 +45,26 @@ export function BetHistory() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className=" w-[333px] text-right text-primary bg-secondary">
-                {invoice.invoice}
-              </TableCell>
-              <TableCell className=" w-[333px] text-right text-white bg-secondary">
-                {invoice.paymentStatus}
-              </TableCell>
-              <TableCell className=" w-[333px] text-right text-white bg-secondary">
-                {invoice.paymentMethod}
-              </TableCell>
-              <TableCell className=" w-[333px] text-right text-white bg-secondary">
-                {invoice.totalAmount}
-              </TableCell>
-              <TableCell className=" w-[333px] text-right pr-4 text-white bg-secondary">
-                {invoice.hash}
-              </TableCell>
-            </TableRow>
-          ))}
+          {data &&
+            data.map((invoice, index) => (
+              <TableRow key={index}>
+                <TableCell className=" w-[333px] text-right text-primary bg-secondary">
+                  {invoice.randomNumber}
+                </TableCell>
+                <TableCell className=" w-[333px] text-right text-white bg-secondary">
+                  {invoice.paymentStatus}
+                </TableCell>
+                <TableCell className=" w-[333px] text-right text-white bg-secondary">
+                  {invoice.paymentMethod}
+                </TableCell>
+                <TableCell className=" w-[333px] text-right text-white bg-secondary">
+                  {invoice.totalAmount}
+                </TableCell>
+                <TableCell className=" w-[333px] text-right pr-4 text-white bg-secondary overflow-hidden">
+                  {invoice.hash}
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </ScrollArea>

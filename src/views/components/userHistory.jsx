@@ -15,7 +15,7 @@ export function UserHistory({ betData }) {
   const invoices = [...betDataArray];
 
   return (
-    <ScrollArea className="">
+    <ScrollArea>
       <ScrollBar />
       <Table>
         <TableHeader>
