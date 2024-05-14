@@ -5,6 +5,7 @@ import { UserHistory } from "./components/userHistory";
 import { BetHistory } from "./components/betHistory";
 import { v4 as uuidv4 } from "uuid";
 import "./index.css";
+import { Header } from "./components/header";
 
 function Homeview() {
   const [betData, setBetData] = useState([]);
@@ -21,6 +22,11 @@ function Homeview() {
   return (
     <>
       <div className="_wrapper_1cwmz_19 h-screen">
+        <div className="_topBar_1cwmz_62">
+          <div>
+            <Header />
+          </div>
+        </div>
         <div className="_gameDisplay_1cwmz_32">
           <Graph />
         </div>
